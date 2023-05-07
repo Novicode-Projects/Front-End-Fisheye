@@ -1,46 +1,45 @@
-    async function getPhotographers() {
-        // Ceci est un exemple de données pour avoir un affichage de photographes de test dès le démarrage du projet, 
-        // mais il sera à remplacer avec une requête sur le fichier JSON en utilisant "fetch".
-        let photographers = [
-            {
-                "name": "Ma data test",
-                "id": 1,
-                "city": "Paris",
-                "country": "France",
-                "tagline": "Ceci est ma data test",
-                "price": 400,
-                "portrait": "account.png"
-            },
-            {
-                "name": "Autre data test",
-                "id": 2,
-                "city": "Londres",
-                "country": "UK",
-                "tagline": "Ceci est ma data test 2",
-                "price": 500,
-                "portrait": "account.png"
-            },
-        ]
-        // et bien retourner le tableau photographers seulement une fois récupéré
-        return ({
-            photographers: [...photographers, ...photographers, ...photographers]})
+// Récupère les données du JSON
+const getPhotographers = async () => {
+  const photographers = await fetch("./data/photographers.json")
+    .then((resp) => resp.json())
+    .catch((err) => console.error(err));
+
+  return photographers;
+};
+
+// Affiche les Photos dans le DOM
+const displayData = async (photographers) => {
+  const photographersSection = document.querySelector(".photographer_section");
+
+  photographers.forEach((photographer) => {
+    const photographerModel = photographerFactory(photographer);
+    const userCardDOM = photographerModel.getUserCardDOM();
+    photographersSection.appendChild(userCardDOM);
+  });
+};
+
+// Fonction principale
+const init = async () => {
+  const { photographers } = await getPhotographers();
+  displayData(photographers);
+
+  const body = document.querySelector("body");
+  const photographersSection = document.querySelectorAll(
+    ".photographer_section article",
+  );
+  let i = 0;
+
+  body.addEventListener("keydown", (e) => {
+    // Navigation
+    if (e.key == "Tab") {
+      i < photographersSection.length - 1 ? i++ : (i = 0);
     }
+    // Selection du profil
+    else if (e.key == "Enter") {
+      console.log(photographersSection[i]);
+    }
+  });
+};
 
-    async function displayData(photographers) {
-        const photographersSection = document.querySelector(".photographer_section");
-
-        photographers.forEach((photographer) => {
-            const photographerModel = photographerFactory(photographer);
-            const userCardDOM = photographerModel.getUserCardDOM();
-            photographersSection.appendChild(userCardDOM);
-        });
-    };
-
-    async function init() {
-        // Récupère les datas des photographes
-        const { photographers } = await getPhotographers();
-        displayData(photographers);
-    };
-    
-    init();
-    
+// Le code s'executera après le chargement de la page web
+window.addEventListener("DOMContentLoaded", init());
