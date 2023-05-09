@@ -8,33 +8,81 @@
       href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
       rel="stylesheet" />
     <title>Fisheye - photographe</title>
+    <script
+      src="https://kit.fontawesome.com/7d32c97d44.js"
+      crossorigin="anonymous"></script>
   </head>
   <body>
     <header>
-      <img src="assets/images/logo.png" class="logo" />
+      <a href="/">
+        <img src="assets/images/logo.png" class="logo" />
+      </a>
     </header>
     <main id="main">
-      <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">
-          Contactez-moi
-        </button>
-      </div>
+      <section class="photograph-header">
+        <article>
+          <h2>Mimi Keel</h2>
+          <h3>London, UK</h3>
+          <p>Voir le beau dans le quotidien</p>
+        </article>
+
+        <article>
+          <button class="contact_button" onclick="displayModal()">
+            Contactez-moi
+          </button>
+        </article>
+
+        <article>
+          <img />
+        </article>
+      </section>
+
+      <section class="photograph-form">
+        <form>
+          <label for="sort">Trier par</label>
+          <select id="sort">
+            <option name="popularity" value="popularity">Popularité</option>
+            <option name="date" value="date">Date</option>
+            <option name="title" value="title">Titre</option>
+          </select>
+        </form>
+      </section>
+
+      <section class="photograph-gallery"></section>
     </main>
     <div id="contact_modal">
       <div class="modal">
         <header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+          <div>
+            <h2>Contactez-moi</h2>
+            <h3></h3>
+          </div>
+          <button onclick="closeModal()">
+            <img src="assets/icons/close.svg" />
+          </button>
         </header>
         <form>
           <div>
             <label>Prénom</label>
-            <input />
+            <input type="text" required />
+          </div>
+          <div>
+            <label>Nom</label>
+            <input type="text" required />
+          </div>
+          <div>
+            <label>Email</label>
+            <input type="email" required />
+          </div>
+          <div>
+            <label>Message</label>
+            <textarea> </textarea>
           </div>
           <button class="contact_button">Envoyer</button>
         </form>
       </div>
     </div>
+    <script src="scripts/factories/media.js"></script>
     <script src="/scripts/pages/photographer.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
   </body>

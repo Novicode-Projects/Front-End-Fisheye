@@ -1,5 +1,4 @@
 function photographerFactory(data) {
-  console.log(data);
   const { city, country, id, name, portrait, price, tagline } = data;
 
   const picture = `assets/photographers/Photographers ID Photos/${portrait}`;
@@ -11,6 +10,7 @@ function photographerFactory(data) {
     // Img + H2 + A
     const img = document.createElement("img");
     img.setAttribute("src", picture);
+    img.setAttribute("alt", name);
 
     const h2 = document.createElement("h2");
     h2.textContent = name;

@@ -1,8 +1,19 @@
 #contact_modal {
+    overflow-y: hidden;
+    position: fixed;
+    top: 0;
     display: none;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    background: rgba(196, 196, 196, 0.4);
 }
 
 .photograph-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     background-color: #FAFAFA;
     height: 300px;
     margin: 0 100px;
@@ -21,20 +32,26 @@
     cursor: pointer;
 }
 
+.contact_button:hover, .contact_button:focus {
+    background-color: #D3573C;
+}
+
 .modal {
     border-radius: 5px;
     background-color: #DB8876;
+    height: 650px;
     width: 50%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     padding: 35px;
     margin: auto;
 }
 
 .modal header {
     justify-content: space-between;
+    margin-top: 20px;
     width: 100%;
 }
 
@@ -42,13 +59,26 @@
     cursor: pointer;
 }
 
-.modal header h2 {
-    font-size: 64px;
+.modal header>div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+}
+
+.modal header h2, .modal header h3  {
+    margin: 0;
+    font-size: 50px;
     font-weight: normal;
-    text-align: center;
+}
+
+.modal header button {
+    border: none;
+    background-color: #DB8876;
 }
 
 form {
+    margin-top: 40px;
     display: flex;
     width: 100%;
     flex-direction: column;
@@ -57,7 +87,7 @@ form {
 
 form label {
     color: #312E2E;
-    font-size: 36px;
+    font-size: 26px;
 }
 
 form div {
@@ -65,12 +95,157 @@ form div {
     flex-direction: column;
     width: 100%;
     align-items: self-start;
-    margin-bottom: 26px;
+    margin-bottom: 15px;
 }
 
 form input {
     width: 100%;
-    height: 68px;
+    height: 45px;
     border: none;
     border-radius: 5px;
+}
+
+form textarea {
+    resize: none;
+    width: 100%;
+    height: 120px;
+    border: none;
+    border-radius: 5px;
+}
+
+.modal button {
+    margin-top: 10px;
+}
+/* Custom */
+
+.photograph-header  article {
+    justify-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0 30px;
+}
+
+.photograph-header article h2 {
+    margin: 0;
+    color: #D3573C;
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 64px;
+    line-height: 83px;
+}
+
+.photograph-header  article h3 {
+    margin: 0;
+    margin-top: 16px;
+    color: #901C1C;
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 31px;
+}
+
+.photograph-header article p {
+    margin: 0;
+    margin-top: 20px;
+    color: #525252;
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 23px;
+}
+
+.photograph-header article img {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+}
+
+#main form {
+    display: flex;
+    flex-direction: row;
+    margin: 0 100px;
+    margin-top: 50px;
+}
+
+#main form label{
+    color: #000000;
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 23px;
+}
+
+#main form select {
+    margin-left: 20px;
+    padding: 15px;
+    color: white;
+    background: #911C1C;
+    border-radius: 5px;
+}
+
+#main form option {
+    background: #911C1C;
+}
+
+.photograph-gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-top: 100px;
+    margin-left: 100px;
+    margin-right: 100px;
+    width: 100%;
+}
+
+.photograph-gallery article {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+    width: 300px;
+}
+
+.photograph-gallery article img {
+    height: 350px;
+    width: 300px;
+    border-radius: 5px;
+}
+
+.photograph-gallery article div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.photograph-gallery article div h3{
+    color: #911C1C;
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 31px;
+}
+
+.photograph-gallery article div span{
+    color: #911C1C;
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 31px;
+}
+
+.photograph-gallery button {
+    border: none;
+    background-color: white;
+    color: #911C1C;
+    font-size: 24px;
+}
+
+.photograph-gallery button:hover, .photograph-gallery button:focus {
+    color: #D3573C;
 }

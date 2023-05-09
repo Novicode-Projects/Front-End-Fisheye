@@ -1,9 +1,9 @@
-function displayModal() {
-    const modal = document.getElementById("contact_modal");
-	modal.style.display = "block";
-}
+const modal = document.querySelector("#contact_modal");
 
-function closeModal() {
-    const modal = document.getElementById("contact_modal");
-    modal.style.display = "none";
-}
+const displayModal = () => {
+  modal.style.display = "flex";
+};
+
+const closeModal = () => {
+  modal.style.display = "none";
+};
