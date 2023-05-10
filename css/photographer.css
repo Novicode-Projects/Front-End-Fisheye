@@ -249,3 +249,49 @@ form textarea {
 .photograph-gallery button:hover, .photograph-gallery button:focus {
     color: #D3573C;
 }
+
+#gallery-modal {
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+#gallery-modal img {
+    height: 600px;
+    width: 600px;
+    border-radius: 5px;
+}
+
+#gallery-modal button {
+    cursor: pointer;
+    border: none;
+    background-color: white;
+}
+
+#gallery-modal p {
+    color: #911C1C;
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 31px;
+}
+
+#gallery-modal i {
+    margin: 20px;
+    color: #911C1C;
+    font-size: 38px;
+}
+
+.gallery-modalClose {
+    position: absolute;
+    top: 70px;
+}
+
+button {
+    cursor: pointer;
+}
+
+*:focus {
+    outline: 2px solid #d3573c;
+}

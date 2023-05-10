@@ -50,6 +50,7 @@
 
       <section class="photograph-gallery"></section>
     </main>
+
     <div id="contact_modal">
       <div class="modal">
         <header>
@@ -82,8 +83,30 @@
         </form>
       </div>
     </div>
+
+    <section id="gallery-modal">
+      <div>
+        <button class="gallery-modalPreviousButton">
+          <i class="fa-solid fa-arrow-left"></i>
+        </button>
+      </div>
+      <article>
+        <img src="https://picsum.photos/id/237/200/300" alt="" />
+        <p>Arc-en-ciel</p>
+      </article>
+      <div>
+        <button class="gallery-modalClose">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <button class="gallery-modalNextButton">
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </div>
+    </section>
+
     <script src="scripts/factories/media.js"></script>
     <script src="/scripts/pages/photographer.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
+    <script src="/scripts/utils/gallery.js"></script>
   </body>
 </html>

@@ -17,9 +17,9 @@ const createMediaCardDOM = (key) => {
   button.dataset.index = "";
 
   button.addEventListener("click", ({ currentTarget }) => {
-    const targetIndex = currentTarget.dataset.index;
+    const { index } = currentTarget.dataset;
 
-    GlobalMedia[targetIndex].likes++;
+    GlobalMedia[index].likes++;
     updateMediaCardsDOM();
   });
 
@@ -27,6 +27,17 @@ const createMediaCardDOM = (key) => {
   div2.append(span, button);
   div.append(h3, div2);
   article.append(img, div);
+
+  article.addEventListener("keydown", ({ key, target }) => {
+    const { tagName } = target;
+
+    if (key == "Enter" && tagName != "BUTTON") {
+      GlobalI = target.tabIndex;
+
+      updateGalleryCard();
+      displayGalleryModal();
+    }
+  });
 
   return article;
 };
@@ -68,4 +79,21 @@ const updateMediaCardsDOM = () => {
 
 const isImage = (media) => {
   return media.hasOwnProperty("image") ? true : false;
+};
+
+const updateGalleryCard = () => {
+  const image = isImage(GlobalMedia[GlobalI]);
+
+  if (image) {
+    const { image } = GlobalMedia[GlobalI];
+    const file = `assets/photographers/${GlobalPhotographer.name}/${image}`;
+    galleryModalImg.setAttribute("src", file);
+  } else {
+    galleryModalImg.setAttribute("src", `https://picsum.photos/id/237/200/300`);
+  }
+
+  const { title } = GlobalMedia[GlobalI];
+
+  galleryModalImg.setAttribute("alt", title);
+  galleryModalp.textContent = title;
 };

@@ -1,6 +1,7 @@
 const GlobalSection = document.querySelector(".photograph-gallery");
 let GlobalPhotographer = [];
 let GlobalMedia = [];
+let GlobalI;
 
 // Récupère le Photographe et ses photos
 const getDataPhotographer = async () => {
@@ -59,22 +60,17 @@ const mediaSort = (selectValue) => {
   // Sort By Popularity
   if (selectValue == "popularity") {
     GlobalMedia.sort(sortByLike);
-    console.log("popularity");
   }
 
   // Sort By Date
   else if (selectValue == "date") {
-    GlobalMedia.reverse(sortByDate);
-    console.log("date");
+    GlobalMedia.sort(sortByDate);
   }
 
   // Sort By Title
   else if (selectValue == "title") {
     GlobalMedia.sort(sortByTitle);
-    console.log("title");
   }
-
-  console.log(GlobalMedia);
 };
 
 const sortByLike = (media1, media2) => {
@@ -127,7 +123,6 @@ const init = async () => {
 
   const h3 = modal.querySelector("h3");
   h3.textContent = GlobalPhotographer.name;
-  console.log(GlobalPhotographer);
 };
 
 //window.addEventListener("DOMContentLoaded", init());
