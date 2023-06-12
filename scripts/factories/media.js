@@ -1,3 +1,7 @@
+const isImage = (media) => {
+  return media.hasOwnProperty("image") ? true : false;
+};
+
 const createMediaCardDOM = (key) => {
   const article = document.createElement("article");
   article.tabIndex = key;
@@ -19,7 +23,14 @@ const createMediaCardDOM = (key) => {
   button.addEventListener("click", ({ currentTarget }) => {
     const { index } = currentTarget.dataset;
 
+    console.log(GlobalMedia);
+
     GlobalMedia[index].likes++;
+    const arrayLikes = GlobalMedia.map(({ likes }) => likes);
+
+    GlobalStats.querySelector(":scope > .like > p").textContent =
+      arrayLikes.reduce((a, b) => a + b, 0);
+
     updateMediaCardsDOM();
   });
 
@@ -75,10 +86,6 @@ const updateMediaCardsDOM = () => {
       }
     });
   });
-};
-
-const isImage = (media) => {
-  return media.hasOwnProperty("image") ? true : false;
 };
 
 const updateGalleryCard = () => {

@@ -1,3 +1,11 @@
+button {
+    cursor: pointer;
+}
+
+*:focus {
+    outline: 2px solid #d3573c;
+}
+
 #contact_modal {
     overflow-y: hidden;
     position: fixed;
@@ -95,7 +103,6 @@ form div {
     flex-direction: column;
     width: 100%;
     align-items: self-start;
-    margin-bottom: 15px;
 }
 
 form input {
@@ -288,10 +295,144 @@ form textarea {
     top: 70px;
 }
 
-button {
+.custom-select {
+    display: flex;
+    flex-direction: column;
+    margin-left: 12px;
+    background-color: #901c1c;
+    border-radius: 5px;
+    width: auto;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  }
+  
+  .custom-select select {
+    display: none; /*hide original SELECT element:*/
+  }
+  
+  .select-selected {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    width: 170px;
+    height: 69px;
     cursor: pointer;
+    color: #ffffff;
+    background-color: #901c1c;
+    border-radius: 5px;
+  }
+  
+  /*style the arrow inside the select element:*/
+  
+  .select:after {
+    position: absolute;
+    content: "";
+    top: 50%;
+    bottom: 50%;
+    right: 10px;
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+    border-color: #fff transparent transparent transparent;
+  }
+
+  .select-active:after {
+    position: absolute;
+    content: "";
+    display: flex;
+    align-items: center;
+    right: 10px;
+    top: 37%;
+    width: 0;
+    height: 0;  
+    border: 6px solid transparent;
+    border-color:  transparent transparent #fff transparent ;
+  }
+  
+
+  /*  border-color: #fff transparent transparent transparent;
+  /*point the arrow upwards when the select box is open (active):*/
+  /*
+  .select-selected.select-arrow-active:after {
+    border-color: transparent transparent #fff transparent;
+    top: 7px;
+  }*/
+  
+  /*style the items (options), including the selected item:*/
+  /*
+  .select-items div,.select-selected {
+    color: #ffffff;
+    cursor: pointer;
+    user-select: none;
+    width: 170px;
+    height: 69px;
+  }*/
+  
+  /*style items (options):*/
+  .select-items {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    width: 170px;
+    height: 69px;
+    cursor: pointer;
+    color: #ffffff;
+    background-color: #901c1c;
+    border-radius: 5px;
+  }
+
+  .select-items p, .select-selected p {
+    margin-left: 20px;
+  }
+  .select-border {
+    width: 170px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .select-border > div {
+    background-color: #ffffff;
+    width: 150px;
+    height: 1px;
+  }
+  
+  /*hide the items when the select box is closed:*/
+  .select-hide {
+    display: none;
+  }
+  
+.stats {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 376px;
+    height: 60px;
+    position: fixed;
+    bottom: 0;
+    right: 20px;
+    background-color: #DB8876;
+    font-size: 24px;
+    font-weight: 500;
 }
 
-*:focus {
-    outline: 2px solid #d3573c;
+
+.stats .like {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.stats span {
+    margin-left: 5px;
+}
+
+.stats .price {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

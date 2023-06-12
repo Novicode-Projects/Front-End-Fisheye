@@ -1,4 +1,10 @@
 const GlobalSection = document.querySelector(".photograph-gallery");
+const GlobalCustomSelect = document.querySelector(".custom-select");
+const GlobalSelectSelected = document.querySelector(".select-selected");
+const GlobalSelectBorders = document.querySelectorAll(".select-border");
+const GlobalSelectItems = document.querySelectorAll(".select-items");
+const GlobalStats = document.querySelector(".stats");
+const GlobalSelectArray = ["Popularité", "Date", "Titre"];
 let GlobalPhotographer = [];
 let GlobalMedia = [];
 let GlobalI;
@@ -59,16 +65,19 @@ const createMediaCardsDOM = async () => {
 const mediaSort = (selectValue) => {
   // Sort By Popularity
   if (selectValue == "popularity") {
+    updateCurrentSelect("Popularité", "Date", "Titre");
     GlobalMedia.sort(sortByLike);
   }
 
   // Sort By Date
   else if (selectValue == "date") {
+    updateCurrentSelect("Date", "Popularité", "Titre");
     GlobalMedia.sort(sortByDate);
   }
 
   // Sort By Title
   else if (selectValue == "title") {
+    updateCurrentSelect("Titre", "Date", "Popularité");
     GlobalMedia.sort(sortByTitle);
   }
 };
@@ -111,19 +120,77 @@ const init = async () => {
   updatePhotographHeader();
   createMediaCardsDOM();
 
+  updateCurrentSelect("Popularité", "Date", "Titre");
   mediaSort("popularity");
   updateMediaCardsDOM();
 
-  const select = document.querySelector(".photograph-form select");
-
-  select.addEventListener("change", function () {
-    mediaSort(this.value);
-    updateMediaCardsDOM();
-  });
-
   const h3 = modal.querySelector("h3");
   h3.textContent = GlobalPhotographer.name;
+
+  const arrayLikes = GlobalMedia.map(({ likes }) => likes);
+
+  GlobalStats.querySelector(":scope > .like > p").textContent =
+    arrayLikes.reduce((a, b) => a + b, 0);
+  GlobalStats.querySelector(":scope > .price > p").textContent =
+    GlobalPhotographer.price;
 };
 
-//window.addEventListener("DOMContentLoaded", init());
 init();
+
+const updateCurrentSelect = (value) => {
+  let selectArray = [];
+
+  if (value == "popularity") {
+    selectArray = ["Popularité", "Date", "Titre"];
+  } else if (value == "date") {
+    selectArray = ["Date", "Popularité", "Titre"];
+  } else if (value == "title") {
+    selectArray = ["Titre", "Date", "Popularité"];
+  }
+
+  const [hiddenSelect1, hiddenSelect2] = GlobalSelectItems;
+
+  selectArray.map((value, key) => {
+    if (key == 0) {
+      GlobalSelectSelected.querySelector(":scope > p").textContent = value;
+    } else if (key == 1) {
+      hiddenSelect1.querySelector(":scope > p").textContent = value;
+    } else if (key == 2) {
+      hiddenSelect2.querySelector(":scope > p").textContent = value;
+    }
+  });
+};
+
+const GlobalCustomSelectChildren =
+  GlobalCustomSelect.querySelectorAll(":scope > div");
+
+GlobalCustomSelectChildren.forEach((div) => {
+  if (div.dataset.select == "selected") {
+    div.addEventListener("keydown", (e) => {
+      if (e.key == "Enter") {
+        if (div.className == "select-selected select") {
+          div.classList.add("select-active");
+          div.classList.remove("select");
+        } else if (div.className == "select-selected select-active") {
+          div.classList.add("select");
+          div.classList.remove("select-active");
+        }
+
+        GlobalSelectItems.forEach((item) => {
+          item.classList.toggle("select-hide");
+        });
+        GlobalSelectBorders.forEach((item) => {
+          item.classList.toggle("select-hide");
+        });
+      }
+    });
+  }
+
+  div.addEventListener("keydown", (e) => {
+    if (e.key == "Enter") {
+      updateCurrentSelect(div.dataset.value);
+      mediaSort(div.dataset.value);
+      updateMediaCardsDOM();
+    }
+  });
+});

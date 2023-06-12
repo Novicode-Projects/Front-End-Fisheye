@@ -8,6 +8,7 @@
       href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
       rel="stylesheet" />
     <title>Fisheye - photographe</title>
+
     <script
       src="https://kit.fontawesome.com/7d32c97d44.js"
       crossorigin="anonymous"></script>
@@ -40,11 +41,36 @@
       <section class="photograph-form">
         <form>
           <label for="sort">Trier par</label>
-          <select id="sort">
-            <option name="popularity" value="popularity">Popularité</option>
-            <option name="date" value="date">Date</option>
-            <option name="title" value="title">Titre</option>
-          </select>
+
+          <div class="custom-select">
+            <div
+              class="select-selected select"
+              data-select="selected"
+              data-value="popularity"
+              tabindex="20">
+              <p>Popularité</p>
+            </div>
+            <div class="select-border select-hide">
+              <div></div>
+            </div>
+            <div
+              class="select-items select-hide"
+              data-select="items"
+              data-value="date"
+              tabindex="21">
+              <p>Date</p>
+            </div>
+            <div class="select-border select-hide">
+              <div></div>
+            </div>
+            <div
+              class="select-items select-hide"
+              data-select="items"
+              data-value="title"
+              tabindex="22">
+              <p>Titre</p>
+            </div>
+          </div>
         </form>
       </section>
 
@@ -91,8 +117,8 @@
         </button>
       </div>
       <article>
-        <img src="https://picsum.photos/id/237/200/300" alt="" />
-        <p>Arc-en-ciel</p>
+        <img src="" alt="" />
+        <p></p>
       </article>
       <div>
         <button class="gallery-modalClose">
@@ -102,6 +128,19 @@
           <i class="fa-solid fa-arrow-right"></i>
         </button>
       </div>
+    </section>
+
+    <section class="stats">
+      <article class="like">
+        <p></p>
+        <span>
+          <i class="fa-solid fa-heart"></i>
+        </span>
+      </article>
+      <article class="price">
+        <p></p>
+        <span>€ / jour</span>
+      </article>
     </section>
 
     <script src="scripts/factories/media.js"></script>
